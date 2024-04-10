@@ -1,0 +1,3 @@
+class Factor < ApplicationRecord
+
+end

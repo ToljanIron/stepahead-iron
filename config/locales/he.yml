@@ -1,0 +1,103 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+he:
+  questionnaire:
+    hi: 'שלום'
+    how_to_answer_html: 'לפניך שאלון אינטראקטיבי קצר.<br><b>הקש/י</b> או <b>החלק/י</b> על המסך לפי ההוראות על מנת לענות על השאלון'    
+    how_to_tap_html: '<b>הקש/י</b> על <p class=x-icon></p> או <p class=v-icon></p><br> על מנת לענות על השאלה' 
+    or: 'או'
+    how_to_swipe_html: '<b>החלק/י</b> ימינה על מנת לענות כן <br> <b>החלק/י</b> שמאלה על מנת לענות לא'
+    how_to_scroll_html: '<b>גלול/גללי</b> מטה או מעלה על מנת לעבור למשתתפ/ת הבא ברשימה'
+    continue_button: 'המשך'
+    continue_later_button: 'המשך אחר כך'
+    close_button: 'סגור'
+    search: 'חפש'
+    question_completion_note_html: 'סיימת לענות על השאלה'
+    revise_selection: 'חזור/חזרי לשאלה ושנה את בחירותיך'
+    continue_to_next_question: 'המשך'
+#    thank_you: 'השאלון הסתיים'
+    thank_you: 'סיימת למלא את השאלון!'
+    thank_you_note: 'תודה רבה על השתתפותך'
+    recommendations_shared1: 'תובנות והמלצות ישותפו'
+    recommendations_shared2: 'איתך בסיום התהליך.'
+    click_to_answer_additional_questions: "לחץ כאן למענה על מס' שאלות נוספות"
+    questionnaire_completion_note: 'To complete the questionnaire, please continue to the following form'
+    welcome_back: 'שלום'
+    you_are_in_html: 'את/ה נמצא/ת בשאלה מספר'
+    click_the_continue: 'הקש/י על הכפתור מטה על מנת להמשיך את השאלון'
+    continue_saved_session_button: 'המשכ/י לענות על השאלון'
+    continue_answer_next_question: 'המשך לשאלה הבאה'
+    saved_location_message: 'המערכת שמרה את מיקומכם בשאלון במידה ותרצו להמשיך במילוי מאוחר יותר'
+    saved: 'נשמר'
+    welcome: 'שלום'
+    start: 'התחל'
+    welcome_sentence: 'ברוכים הבאים לשאלון של <span dir="ltr">StepAhead</span>, לחצו "התחל" וענו על השאלות בדפים הבאים'
+    clear_selection: 'נקה בחירה'
+    error_answer_for_employees: 'סמן V או X עבור כל האנשים ברשימה על מנת להמשיך'
+    success_all_employees_answered: 'ענית על השאלה עבור כל האנשים ברשימה , ניתן להמשיך לשאלה הבאה'
+    resume: 'המשך'
+    must_select: 'עליך לבחור לפחות'
+    people_to_continue: 'אנשים על מנת להמשיך'
+    to_continue: 'על מנת להמשיך'
+    find_employees: 'חפש'
+    selected: 'משתתפים שנבחרו'
+    are_you_sure: 'האם את/ה בטוח/ה כי ברצונך לבחור את'
+    connection_lost: 'Connection is lost please check your internet connection'
+    ok: 'אישור'
+    cancel: 'ביטול'
+    search_message: 'חיפוש משתתף ע"פ שם'
+    close_search: 'סגור רשימת חיפוש'
+    no_results: 'אין תוצאות'
+    safari_msg: 'על מנת להינות מחוויה מיטבית בעת מילוי השאלון אנו ממליצים לפתוח את הסקר בדפדפן כרום'
+    copy_link: 'העתק קישור'
+    link_copied: 'הועתק'
+    first_name: 'שם פרטי'
+    last_name: 'שם משפחה'
+    department: 'מחלקה'
+#    select_department: 'בחר מחלקה'
+    select_department: 'בחר יחידה'
+    enter_first_name: 'שם פרטי'
+    enter_last_name: 'שם משפחה'
+    save : 'שמור'
+    hello : 'שלום'
+
+    text_snowball2_1: 'דגשים למילוי הסקר:'
+    text_snowball2_2: 'בשאלה הראשונה תתבקש.י לציין  את שמות האנשים שברשת שלך.'
+    text_snowball2_3: 'בשאלות הבאות נשאל על טיב הקשר עם האנשים שציינת בשאלה הראשונה.'
+    text_snowball2_4: 'השאלות המוצגות בראשית כל עמוד, נסגרות וניתן לחזור אליהם באמצעות לחיצה על כפתור ה –<span class=v-icon-2></span>'
+    text_snowball2_5: 'שימ.י לב שניתן לחזור בכל שלב לשאלה הראשונה ולהוסיף אנשים באמצעות כפתור הוספת שם.'
+
+    text_first_enter2_1: 'הגעת למערכת סקרים רשתיים של חברת סטפאהד.'
+    text_first_enter2_2: 'סטפאהד הינה חברה המבוססת  על ניתוח רשתות ארגוניות, הממפה את הקשרים הפנים  ארגונים  במטרה לקדם שיתופי פעולה.'
+    text_first_enter2_3: 'המענה שלך על סקר זה יאפשר לבנות את מפת הקשרים בארגון שלך ולסייע ביצירת חיבוריות ושיתופיות.'
+    text_first_enter2_4: 'לתשומת ליבך, בלחיצה על המשך, את.ה מאשר.ת כי פרטיך ישמרו במערכת סטפאהד עד לסיום התהליך.'
+
+    text_snowball_1 : 'כחלק מתהליך מיפוי רשתי, לפניך שאלון אינטראקטיבי קצר.'
+    text_snowball_2 : 'על השאלה הראשונה נבקשך לענות על ידי הקלדת שמות של אנשים בהתאם לשאלה.'
+    text_snowball_3 : 'בשאלות הבאות נשאל שאלות על האנשים שציינת בשאלה הראשונה.'
+    text_snowball_4 : 'החלק/י ימינה <br> על מנת לענות כן'
+    text_snowball_5 : 'החלק/י שמאלה <br> על מנת לענות לא'
+    text_snowball_6 : 'לתשומת ליבך,<br>בלחיצה על המשך את.ה מאשר.ת כי פרטיך ישמרו במערכת סטפאהד עד לסיום התהליך'
+
+  sms:
+    success: 'ברוכ/ה הבא/ה לשאלון הערכת עובדים מטעם חברת Stepahead. לחצ/י על הקישור כדי להתחיל את השאלון'
+    fail: 'ברוכ/ה הבא/ה לשאלון הערכת עובדים מטעם חברת Stepahead. מספר תעודת הזהות ששלחת אינו מופיע במערכת שלח/י שנית או פנה/י לתמיכה.'

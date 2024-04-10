@@ -1,0 +1,34 @@
+Index: Gemfile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>source 'https://rubygems.org'\n\nruby '3.2.2'\ngem 'rails', '~> 6.1'\n#gem 'clockwork'\ngem 'pundit'\ngem 'bcrypt'\ngem 'pg',  '~> 1.5', '>= 1.5.4'\ngem 'descriptive-statistics'\ngem 'writeexcel'\ngem 'fastimage'\ngem 'oj'\ngem 'oj_mimic_json'\ngem 'backup', '3.4.0'\ngem 'activerecord'\n#gem 'tiny_tds'\n#gem 'activerecord-sqlserver-adapter'\ngem 'dotenv'\ngem 'meta_request'\ngem 'literate_randomizer', '~> 0.4.0'\ngem 'delayed_job_active_record'\ngem 'hirb'\ngem 'rack-cors'\ngem 'jwt'\ngem 'thor'\ngem 'nmatrix', git: 'https://github.com/tree-tech-il/nmatrix.git', branch: 'ruby_3_2_compatibility'\ngem 'tzinfo-data'\ngem 'awesome_print'\ngem 'sidekiq', '5.2.9'\ngem 'redis'\ngem 'pdfkit'\ngem 'webdrivers'\ngem 'selenium'\n\ngroup :production, :onpremise, :development do\n  gem 'mail'\n  gem 'write_xlsx'\n  gem 'net-sftp'\n  gem 'nokogiri'\n  gem 'roo'\n  gem 'roo-xls', '~>1.1.0'\n  gem 'dalli'\n  #gem 'therubyracer'\n  gem 'mini_racer'\n  gem 'sassc-rails'\n  gem 'uglifier'\n  gem 'ejs'\n  #gem 'yui-compressor'\n  gem 'sprockets'\n  gem 'sprockets-rails'\n  gem 'font-awesome-rails'\n  gem 'twilio-ruby' ,'5.4.5'\n  gem \"jqcloud-rails\"\n  gem \"daemons\"\n  gem 'colorize'\n  gem 'aws-sdk', '~> 3.0.0.rc1'\nend\n\ngroup :development, :test do\n  gem 'spork'\n  gem 'rspec'\n  gem 'rspec-core'  \n  gem 'rspec-rails', '~> 6.0', '>= 6.0.3'  # gem 'transpec'\n  gem 'seed_dump'\n  gem 'puma', '~> 3.7'\n  gem 'byebug'\n  #gem 'solargraph'\n  \nend\n\ngroup :test do\n  gem 'factory_bot'\n  gem 'database_cleaner'\n  gem 'jasmine-rails'\n  gem 'simplecov'\n  gem 'rubyXL'\nend\n\ngroup :production do\n  #gem 'heroku-deflater'\n  #gem 'wkhtmltopdf-heroku'\n\nend\n\ngroup :production, :onpremise do\n  gem 'passenger', '5.3.4'\n  gem 'rails_12factor', '0.0.2'\nend\n\n#post rails 6 upgrade\ngem 'net-ftp'\n\ngem 'prawn'\ngem 'prawn-templates'\ngem 'pdf-reader'\ngem 'hexapdf'
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Gemfile b/Gemfile
+--- a/Gemfile	
++++ b/Gemfile	
+@@ -41,7 +41,7 @@
+   gem 'roo-xls', '~>1.1.0'
+   gem 'dalli'
+   #gem 'therubyracer'
+-  gem 'mini_racer'
++#   gem 'mini_racer'
+   gem 'sassc-rails'
+   gem 'uglifier'
+   gem 'ejs'
+@@ -63,7 +63,6 @@
+   gem 'rspec-rails', '~> 6.0', '>= 6.0.3'  # gem 'transpec'
+   gem 'seed_dump'
+   gem 'puma', '~> 3.7'
+-  gem 'byebug'
+   #gem 'solargraph'
+   
+ end
+@@ -93,4 +92,4 @@
+ gem 'prawn'
+ gem 'prawn-templates'
+ gem 'pdf-reader'
+-gem 'hexapdf'
+\ No newline at end of file
++gem 'hexapdf'

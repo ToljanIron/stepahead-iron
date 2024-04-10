@@ -1,0 +1,143 @@
+
+<div class="wrapper">
+    <div class="container">
+        <main class="bg-grey">
+
+            <!-- Start Header  -->
+            <header class="header">
+                <div class="inner-container">
+                    <div class="header-wrapper flex-content">
+                        <div class="header-content">
+                            <p class="header-text" ><%=Date.today.strftime('%d/%m/%Y')%></p>
+                        </div>
+                        <div class="header-logo">
+                            <a href="#">
+                                <%=image_tag(@base_url+asset_path('logo-pr.png'),alt:"step-ahead",class:"header-logo-image")%>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- End Header  -->
+
+            <!-- Start client Innovation -->
+            <section class="client-innovation">
+                <div class="inner-container">
+                    <div class="client-innovation-card">
+                        <div class="client-innovation-wrapper">
+                            <div class="inner-content">
+                                <h2 class="main-title">
+                                    הי <%=@employee.first_name%>,
+                                </h2>
+                                <h3 class="subtitle">
+                                    תודה על השתתפותך בסקר <%=@aq.name%>!
+                                </h3>
+                            </div>
+                            <div class="inner-logo">
+                                <%if @aq.company.logo_url%>
+                                    <%=image_tag(@aq.company.logo_url, alt:@aq.company.name,class:"inner-logo-image")%>
+                                <%end%>
+                            </div>
+                            <p class="inner-text">
+                                <%= raw @aq.personal_report_intro%>
+                            </p>
+                        </div>
+                        <div class="map-content">
+                            <img src="<%=@base_url%>personal_report_images/personal_report_org_map_<%=@employee.id.to_s%>.png" class="org-map-image" />
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+            <!-- End client Innovation -->
+
+            <!-- Start Your Network -->
+            <section class="your-network">
+                <div class="inner-container newwork-inner-container">
+                    <div class="you-network-content flex-content">
+                        <div class="your-network-grid">
+                            <div class="your-network-img">
+                                <img src="<%=@base_url%>personal_report_images/personal_report_map_<%=@employee.id.to_s%>.png" class="map-image" />
+                            </div>
+                        </div>
+                        <div class="your-network-grid">
+                            <div class="you-network-inner-content">
+                                <h2 class="main-title">
+                                    הרשת שלך
+                                </h2>
+                                <ul class="your-network-list">
+                                    <li class="your-network-item">
+                                        <h4 class="your-network-subtitle">יש לך <%=@report_stats[:sum_connections]%> קשרים ברשת החדשנות</h4>
+                                        <p>הממוצע הארגוני הוא <%=@report_stats[:avg_connections]%></p>
+                                    </li>
+                                    <li class="your-network-item">
+                                        <h4 class="your-network-subtitle">יש לך <%=@report_stats[:out_of_group_sum_connections]%> קשרים עם משתתפים מיחידה אחרת</h4>
+                                        <p>הממוצע הארגוני הוא <%=@report_stats[:out_of_group_avg_connections]%></p>
+                                    </li>
+                                    <li class="your-network-item">
+                                        <h4 class="your-network-subtitle">השאלה בה נבחרת ע״י הכי הרבה משתתפים היתה:</h4>
+                                        <h5>
+                                            <%=@report_stats[:most_inbound_question]%>
+                                        </h5>
+                                    </li>
+                                </ul>
+                                <ul class="chart-list border-top">
+                                    <li class="chart-arrow-icon">
+                                        חצים  מייצגים קשרים 
+                                    </li>
+                                    <li class="chart-size-icon">
+                                        גודל העיגול מייצג את מידת המרכזיות של המשתתפים ברשת
+                                    </li>
+                                    <li class="chart-color-icon">
+                                        צבעי העיגולים מייצגים יחידות שונות
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>    
+            <!-- End Your Network -->
+
+            <!-- Start Network Communication -->
+            <section class="network-communication">
+                <div class="inner-container communication-inner-container">
+                    <div class="network-communication-centent">
+                        <div class="network-communication-grid-image">
+                            <div class="network-comunication-img">
+                                <%=image_tag(@base_url+asset_path('network-communication.png'),class:"network-communication-image")%>
+                            </div>
+                        </div>
+                        <div class="network-communication-grid-content">
+                            <ul class="network-communication-list">
+                                <li class="network-comunication-item">
+                                    קשרים בין אנשים מיחידות מגוונות מייצרים רעיונות חדשים
+                                </li>
+                                <li class="network-comunication-item">
+                                    שיתוף אנשים בצרכים יכול להביא לפתרונות ממקורות לא צפויים
+                                </li>
+                                <li class="network-comunication-item">
+                                    רשת היא נכס, חשוב לתחזק ולפתח אותה באופן קבוע
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Network Communication -->
+
+        </main>
+    </div>
+</div>
+
+<style>
+.chart-list li:before {
+    background-image: url("<%=@base_url%><%=asset_path('arrow.png')%>");
+}
+.chart-list .chart-size-icon:before {
+   background-image: url("<%=@base_url%><%=asset_path('size.png')%>");
+}
+.chart-list .chart-color-icon:before {
+    background-image: url("<%=@base_url%><%=asset_path('color-scheme.png')%>");
+}
+</style>

@@ -1,0 +1,52 @@
+<div ng-controller="mobileQuestionnaireController" class="mobile-interact-page" ng-init="init()">
+  <div class='mobile-content' id="main_container">
+    <div class='page_content mobile-interact-page-content' style="display: flex;
+      flex-direction: column;
+      justify-content: space-around;">
+      <div style="display:none;" id='close_title' data-close-title="{{mobile_app_service.t('thank_you')}}"></div>
+      <div ng-if="mobile_app_service.isLangRtl()" dir='rtl' style="display: flex; flex-direction: column;gap: 100px;">
+        <h1  class='page_title' style="margin-bottom: 4rem" >{{closeTitle()}}</h1>
+        <div class='text' style="margin-bottom: 4rem">
+          <span id ='close_text_title1' data-close-text-title1="{{mobile_app_service.t('recommendations_shared1')}}">{{closeTextTitle1()}}</span><br>
+          <span id ='close_text_title2' data-close-text-title2="{{mobile_app_service.t('recommendations_shared2')}}">{{closeTextTitle2()}}</span>
+        </div>
+        <div id = 'close_sub_title' style="margin-bottom: 4rem" class='text' data-close-sub-title="{{mobile_app_service.t('thank_you_note')}}">
+          {{closeSubTitle()}}
+        </div>
+        <div class="interact-page-primary-btn" ng-if="isReferralBtn()" ng_style="{{referralBtnColor()}}">
+          <a href="{{referralUrl()}}">
+            {{referralBtnText(mobile_app_service.t('click_to_answer_additional_questions'))}}
+            <%#= I18n.t('questionnaire.click_to_answer_additional_questions')  %>
+          </a>
+          <!-- <a href="https://singuser14e5e99e.fra1.qualtrics.com/jfe/form/SV_8FWy0xomcTfYfTD?id={{getParticipantId()}}"><%#= I18n.t('questionnaire.click_to_answer_additional_questions')  %></a> -->
+        </div>
+        <div class="large-logo-mobile-2">
+          <img ng-src="{{newLogoSrc()}}"  width="100%">
+          <%#= asset_path 'step_ahead_logo.png' %>
+        </div>
+      </div>
+      <div ng-if="!mobile_app_service.isLangRtl()" style="display: flex; flex-direction: column;gap: 100px;">
+        <h1  class='page_title' style="margin-bottom: 4rem" >{{closeTitle()}}</h1>
+        <div class='text' style="margin-bottom: 4rem">
+          <span id ='close_text_title1' data-close-text-title1="{{mobile_app_service.t('recommendations_shared1')}}">{{closeTextTitle1()}}</span><br>
+          <span id ='close_text_title2' data-close-text-title2="{{mobile_app_service.t('recommendations_shared2')}}">{{closeTextTitle2()}}</span>
+        </div>
+        <div id = 'close_sub_title' class='text' style="margin-bottom: 4rem" data-close-sub-title="{{mobile_app_service.t('thank_you_note')}}">
+          {{closeSubTitle()}}
+        </div>
+        <div class="interact-page-primary-btn" ng-if="isReferralBtn()" ng_style="{{referralBtnColor()}}">
+          <a href="{{referralUrl()}}">
+            {{referralBtnText(mobile_app_service.t('click_to_answer_additional_questions'))}}
+            <%#= I18n.t('questionnaire.click_to_answer_additional_questions')  %>
+          </a>
+          <!-- <a href="https://singuser14e5e99e.fra1.qualtrics.com/jfe/form/SV_8FWy0xomcTfYfTD?id={{getParticipantId()}}"><%#= I18n.t('questionnaire.click_to_answer_additional_questions')  %></a> -->
+        </div>
+        <div class="large-logo-mobile">
+          <img ng-src="{{newLogoSrc()}}"  width="100%">
+          <%#= asset_path 'step_ahead_logo.png' %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

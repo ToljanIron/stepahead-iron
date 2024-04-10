@@ -1,0 +1,382 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ClientPropertiesManager\">\n    <properties class=\"javax.swing.AbstractButton\">\n      <property name=\"hideActionText\" class=\"java.lang.Boolean\" />\n    </properties>\n    <properties class=\"javax.swing.JComponent\">\n      <property name=\"html.disable\" class=\"java.lang.Boolean\" />\n    </properties>\n    <properties class=\"javax.swing.JEditorPane\">\n      <property name=\"JEditorPane.w3cLengthUnits\" class=\"java.lang.Boolean\" />\n      <property name=\"JEditorPane.honorDisplayProperties\" class=\"java.lang.Boolean\" />\n      <property name=\"charset\" class=\"java.lang.String\" />\n    </properties>\n    <properties class=\"javax.swing.JList\">\n      <property name=\"List.isFileList\" class=\"java.lang.Boolean\" />\n    </properties>\n    <properties class=\"javax.swing.JPasswordField\">\n      <property name=\"JPasswordField.cutCopyAllowed\" class=\"java.lang.Boolean\" />\n    </properties>\n    <properties class=\"javax.swing.JSlider\">\n      <property name=\"Slider.paintThumbArrowShape\" class=\"java.lang.Boolean\" />\n      <property name=\"JSlider.isFilled\" class=\"java.lang.Boolean\" />\n    </properties>\n    <properties class=\"javax.swing.JTable\">\n      <property name=\"Table.isFileList\" class=\"java.lang.Boolean\" />\n      <property name=\"JTable.autoStartsEdit\" class=\"java.lang.Boolean\" />\n      <property name=\"terminateEditOnFocusLost\" class=\"java.lang.Boolean\" />\n    </properties>\n    <properties class=\"javax.swing.JToolBar\">\n      <property name=\"JToolBar.isRollover\" class=\"java.lang.Boolean\" />\n    </properties>\n    <properties class=\"javax.swing.JTree\">\n      <property name=\"JTree.lineStyle\" class=\"java.lang.String\" />\n    </properties>\n    <properties class=\"javax.swing.text.JTextComponent\">\n      <property name=\"caretAspectRatio\" class=\"java.lang.Double\" />\n      <property name=\"caretWidth\" class=\"java.lang.Integer\" />\n    </properties>\n  </component>\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"false\">\n    <OptionsSetting value=\"true\" id=\"Add\" />\n    <OptionsSetting value=\"true\" id=\"Remove\" />\n    <OptionsSetting value=\"true\" id=\"Checkout\" />\n    <OptionsSetting value=\"true\" id=\"Update\" />\n    <OptionsSetting value=\"true\" id=\"Status\" />\n    <OptionsSetting value=\"true\" id=\"Edit\" />\n    <ConfirmationsSetting value=\"0\" id=\"Add\" />\n    <ConfirmationsSetting value=\"0\" id=\"Remove\" />\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_6\" default=\"true\" assert-keyword=\"true\" jdk-15=\"true\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n  <component name=\"masterDetails\">\n    <states>\n      <state key=\"ProjectJDKs.UI\">\n        <settings>\n          <splitter-proportions>\n            <option name=\"proportions\">\n              <list>\n                <option value=\"0.2\" />\n              </list>\n            </option>\n          </splitter-proportions>\n        </settings>\n      </state>\n    </states>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 0dbb0ab2874759dfb9742a8927a11eecd58bc7db)
++++ b/.idea/misc.xml	(date 1712565417219)
+@@ -38,19 +38,6 @@
+       <property name="caretWidth" class="java.lang.Integer" />
+     </properties>
+   </component>
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+-    <OptionsSetting value="true" id="Add" />
+-    <OptionsSetting value="true" id="Remove" />
+-    <OptionsSetting value="true" id="Checkout" />
+-    <OptionsSetting value="true" id="Update" />
+-    <OptionsSetting value="true" id="Status" />
+-    <OptionsSetting value="true" id="Edit" />
+-    <ConfirmationsSetting value="0" id="Add" />
+-    <ConfirmationsSetting value="0" id="Remove" />
+-  </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" default="true" assert-keyword="true" jdk-15="true">
+-    <output url="file://$PROJECT_DIR$/out" />
+-  </component>
+   <component name="masterDetails">
+     <states>
+       <state key="ProjectJDKs.UI">
+@@ -66,4 +53,4 @@
+       </state>
+     </states>
+   </component>
+-</project>
+\ No newline at end of file
++</project>
+Index: config/routes.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Workships::Application.routes.draw do\n\n\n  resources :sessions, only: [:new, :create, :destroy, :forgot_password, :set_password, :signin]\n\n  root to: redirect('/v2')\n\n  get   '/robots.txt',                  to: 'application#robots'\n  get   '/signin',                      to: 'sessions#signin'\n  get   '/qqq',                         to: 'utils#qqq'\n\n  get   '/get_questionnaires',             to: 'mobile/questionnaire#get_questionnaires_for_settings_tab'\n  get   '/get_questionnaire_participants', to: 'mobile/questionnaire#get_questionnaire_participants'\n\n  post  '/API/signin',                to: 'sessions#api_signin'\n  get   '/API/signout',               to: 'sessions#destroy'\n\n  post  '/API/import_emails',         to: 'raw_data_entries#import_emails'\n  post  '/API/import_meetings',       to: 'raw_meetings_data#import_meetings'\n\n  ############ mobile ###############\n\n  get   '/mobile',                     to: 'mobile/companies#show'\n  get   '/questionnaire',              to: 'application#show_mobile'\n  get   'get_questionnaire_employees', to: 'questionnaire#all_employees'\n  get   'get_questionnaire_groups', to: 'questionnaire#all_groups'\n  get   'get_question', to: 'questionnaire#get_question'\n\n  post  'get_next_question',           to: 'questionnaire#get_next_question'\n  post  'close_question',              to: 'questionnaire#close_question'\n  post  'add_unverfied_participant',   to: 'questionnaire#add_unverfied_participant'\n  get   'participant_automcomplete',   to: 'questionnaire#participant_automcomplete'\n\n  post  'update_replies',              to: 'questionnaire#update_question_replies'\n  get   'keep_alive',                  to: 'questionnaire#keep_alive'\n  get 'personal_map_for_pdf'              ,to: 'questionnaire#personal_map_for_pdf'\n\n  get   'question/active_employess', to: 'mobile/questionnaire#active_employees'\n  post  'receive_sms', to: 'sms#receive_and_respond'\n\n  ######################## admin ##################################\n  post '/0dWb7K61dIyxHkXkALixfEwKIEG7H9/create_company',     to: 'backoffice#create_company'\n  post '/0dWb7K61dIyxHkXkALixfEwKIEG7H9/create_user',        to: 'backoffice#create_user'\n  get  '/0dWb7K61dIyxHkXkALixfEwKIEG7H9/show_users',         to: 'backoffice#show_users'\n  get  '/0dWb7K61dIyxHkXkALixfEwKIEG7H9/show_companies',     to: 'backoffice#show_companies'\n  post '/0dWb7K61dIyxHkXkALixfEwKIEG7H9/change_user_company',to: 'backoffice#change_user_company'\n\n  ######################## onprem setup ############################\n  get  '/sa_setup',                         to: 'sa_setup#base'\n  get  '/sa_setup/form_error',              to: 'sa_setup#form_error'\n  get  '/sa_setup/microsoft_auth',          to: 'sa_setup#microsoft_auth'\n  get  '/sa_setup/microsoft_auth_redirect', to: 'sa_setup#microsoft_auth_redirect'\n  get  '/sa_setup/microsoft_auth_back',     to: 'sa_setup#microsoft_auth_back'\n  get  '/sa_setup/log_files_location',      to: 'sa_setup#log_files_location'\n  post '/sa_setup/log_files_location',      to: 'sa_setup#log_files_location_set'\n  get  '/sa_setup/log_files_location_verification', to: 'sa_setup#log_files_location_verification'\n  get  '/sa_setup/gpg_passphrase',          to: 'sa_setup#gpg_passphrase'\n  post '/sa_setup/gpg_passphrase',          to: 'sa_setup#gpg_passphrase_set'\n  get  '/sa_setup/it_done',                 to: 'sa_setup#it_done'\n  get  '/sa_setup/system_definitions',      to: 'sa_setup#upload_company'\n  post '/sa_setup/employees_excel',         to: 'sa_setup#employees_excel'\n  post '/sa_setup/validate_unverified',         to: 'interact_backoffice#validate_unverified_participants'\n  get  '/sa_setup/standby_or_push',         to: 'sa_setup#standby_or_push'\n  get  '/sa_setup/goto_system',             to: 'sa_setup#goto_system'\n  get  '/sa_setup/collect_now',             to: 'sa_setup#collect_now'\n  get  '/sa_setup/push',                    to: 'sa_setup#push'\n  get  '/sa_setup/retry_push',              to: 'sa_setup#collect_again'\n  get  '/sa_setup/get_push_state',          to: 'sa_setup#get_push_state'\n\n\n  ############## Interact ##########################################\n  get  '/interact_backoffice',                          to: 'interact_backoffice#questionnaire'\n  get  '/interact_backoffice/get_questionnaires',       to: 'interact_backoffice#get_questionnaires'\n  get  '/interact_backoffice/questionnaire',            to: 'interact_backoffice#questionnaire'\n  post '/interact_backoffice/questionnaire_update',     to: 'interact_backoffice#questionnaire_update'\n  post '/interact_backoffice/personal_report_update',   to: 'interact_backoffice#personal_report_update'\n  post '/interact_backoffice/questionnaire_delete',     to: 'interact_backoffice#questionnaire_delete'\n  get  '/interact_backoffice/questionnaire_create',     to: 'interact_backoffice#questionnaire_create'\n  post '/interact_backoffice/quesitonnaire_run',        to: 'interact_backoffice#questionnaire_run'\n  post '/interact_backoffice/quesitonnaire_close',      to: 'interact_backoffice#questionnaire_close'\n  post '/interact_backoffice/quesitonnaire_copy',       to: 'interact_backoffice#questionnaire_copy'\n  post '/interact_backoffice/update_test_participant',  to: 'interact_backoffice#update_test_participant'\n  get  '/interact_backoffice/get_questions',            to: 'interact_backoffice#get_questions'\n  post '/interact_backoffice/questions_create',         to: 'interact_backoffice#question_create'\n  post '/interact_backoffice/questions_update',         to: 'interact_backoffice#question_update'\n  post '/interact_backoffice/questions_reorder',        to: 'interact_backoffice#questions_reorder'\n  post '/interact_backoffice/questions_delete',         to: 'interact_backoffice#question_delete'\n  get  '/interact_backoffice/get_participants',         to: 'interact_backoffice#participants'\n  get  '/interact_backoffice/get_participant_status',   to: 'interact_backoffice#participant_status'\n  get  '/interact_backoffice/get_questionnaire_status',   to: 'interact_backoffice#questionnaire_status'\n  post '/interact_backoffice/participants_create',      to: 'interact_backoffice#participants_create'\n  post '/interact_backoffice/participants_update',      to: 'interact_backoffice#participants_update'\n  post '/interact_backoffice/participants_delete',      to: 'interact_backoffice#participants_delete'\n  post '/interact_backoffice/participant_reset',        to: 'interact_backoffice#participant_reset'\n  post '/interact_backoffice/participant_resend',       to: 'interact_backoffice#participant_resend'\n  post '/interact_backoffice/resend_to_unanswered',       to: 'interact_backoffice#resend_to_unanswered'\n  post '/interact_backoffice/close_participant_questionnaire',       to: 'interact_backoffice#close_participant_questionnaire'\n  post '/interact_backoffice/set_active_questionnaire_question', to: 'interact_backoffice#set_active_questionnaire_question'\n  get  '/interact_backoffice/participants_filter',      to: 'interact_backoffice#participants_filter'\n  get  '/interact_backoffice/participants_bulk_actions',to: 'interact_backoffice#participants_bulk_actions'\n  post '/interact_backoffice/participants_load',        to: 'interact_backoffice#participants_load'\n  get  '/interact_backoffice/participants_get_emps',    to: 'interact_backoffice#participants_get_emps'\n  get  '/interact_backoffice/reports',                  to: 'interact_backoffice#reports'\n  get  '/interact_backoffice/reports_network',          to: 'interact_backoffice#reports_network'\n  get  '/interact_backoffice/reports_measures',         to: 'interact_backoffice#reports_measures'\n  get  '/interact_backoffice/reports_survey',         to: 'interact_backoffice#reports_survey'\n  get  '/interact_backoffice/reports_bidirectional_network', to: 'interact_backoffice#reports_bidirectional_network'\n  get  '/interact_backoffice/reports_summary',          to: 'interact_backoffice#reports_summary'\n\n  post '/interact_backoffice/actions_img_upload',      to: 'interact_backoffice#img_upload'\n  post '/interact_backoffice/actions_img_bulk_upload', to: 'interact_backoffice#actions_img_bulk_upload'\n  get  '/interact_backoffice/actions_download_sample' ,to: 'interact_backoffice#download_sample'\n  get  '/interact_backoffice/actions_participants_status' ,to: 'interact_backoffice#download_participants_status'\n  post '/interact_backoffice/actions_upload_participants' ,to: 'interact_backoffice#upload_participants'\n  post '/interact_backoffice/actions_upload_additional_participants' ,to: 'interact_backoffice#upload_additional_participants'\n\n  get '/interact_backoffice/participants_refresh' ,to: 'interact_backoffice#participants_refresh'\n\n  post '/interact_backoffice/simulate_replies',        to: 'interact_backoffice#simulate_results'\n\n  post '/interact_backoffice/remove_participants',      to: 'interact_backoffice#remove_participants'\n  post '/interact_backoffice/save_params',      to: 'interact_backoffice#update_data_mapping'\n  get '/interact_backoffice/get_factors',               to: 'interact_backoffice#get_factors'\n  post '/interact_backoffice/save_k_factor',    to: 'interact_backoffice#save_k_factor'\n  get '/interact_backoffice/get_companies',     to: 'interact_backoffice#get_companies'\n  post '/interact_backoffice/company_update',    to: 'interact_backoffice#company_update'\n  post '/interact_backoffice/company_create',    to: 'interact_backoffice#company_create'\n  post '/interact_backoffice/company_delete',    to: 'interact_backoffice#company_delete'\n  get '/interact_backoffice/get_users',     to: 'interact_backoffice#get_users'\n  post '/interact_backoffice/user_update',   to: 'interact_backoffice#user_update'\n  post '/interact_backoffice/user_create',   to: 'interact_backoffice#user_create'\n  post '/interact_backoffice/user_delete',   to: 'interact_backoffice#user_delete'\n\n  ############################ Company ############################\n  post '/company/logo_upload',      to: 'companies#logo_upload'\n  post '/company/logo_remove',      to: 'companies#logo_remove'\n\n  ############################ Personal Report ############################\n  get '/personal_report/:token',                           to: 'personal_report#generate_pdf'\n  post '/send_personal_report',                            to: 'personal_report#send_personal_report'\n\n  ############################ v3 ############################\n\n  post 'v3/setting/update_user_info'         ,to: 'settings#update_user_info'\n  post 'v3/setting/update_security_settings' ,to: 'settings#update_security_settings'\n  post 'v3/setting/edit_password'            ,to: 'settings#edit_password'\n  get 'v3/get_config_params'                 ,to: 'settings#get_config_params'\n\n  get 'v3/jobs_status'                       ,to: 'jobs#jobs_status'\n\n  get 'v3/get_snapshots'                     ,to: 'snapshots#get_snapshots'\n  get 'v3/get_time_picker_snapshots'         ,to: 'snapshots#get_time_picker_snapshots'\n\n  get 'v3/get_groups'                        ,to: 'groups#groups'\n  get 'v3/get_user_details'                  ,to: 'users#user_details'\n\n  # Emails\n  get 'v3/get_emails_time_picker_data'       ,to: 'measures#get_emails_time_picker_data'\n  get 'v3/get_email_scores'                  ,to: 'measures#get_email_scores'\n  get 'v3/get_employees_emails_scores'       ,to: 'measures#get_employees_emails_scores'\n  get 'v3/get_email_stats'                   ,to: 'measures#get_email_stats'\n  get 'v3/get_emails_excel_report'           ,to: 'reports#get_emails_excel_report'\n\n  # Meetings\n  get 'v3/get_meetings_time_picker_data'     ,to: 'measures#get_meetings_time_picker_data'\n  get 'v3/get_meetings_scores'               ,to: 'measures#get_meetings_scores'\n  get 'v3/get_meetings_stats'                ,to: 'measures#get_meetings_stats'\n  get 'v3/get_employees_meetings_scores'     ,to: 'measures#get_employees_meetings_scores'\n\n  # Dynamics\n  get 'v3/get_collaboration_stats'           ,to: 'measures#get_dynamics_stats'\n  get 'v3/get_dynamics_time_picker_data'     ,to: 'measures#get_dynamics_time_picker_data'\n  get 'v3/get_dynamics_scores'               ,to: 'measures#get_dynamics_scores'\n  get 'v3/get_dynamics_employee_scores'      ,to: 'measures#get_dynamics_employee_scores'\n  get 'v3/get_dynamics_excel_report'         ,to: 'reports#get_dynamics_excel_report'\n  get 'v3/get_dynamics_map'                  ,to: 'network_snapshot_data#get_dynamics_map'\n  get 'v3/get_dynamics_employee_map'         ,to: 'network_snapshot_data#get_dynamics_employee_map'\n\n  # Interfaces\n  get 'v3/get_interfaces_time_picker_data'   ,to: 'measures#get_interfaces_time_picker_data'\n  get 'v3/get_interfaces_scores'             ,to: 'measures#get_interfaces_scores'\n  get 'v3/get_interfaces_map'                ,to: 'network_snapshot_data#get_interfaces_map'\n  get 'v3/get_interfaces_stats'              ,to: 'measures#get_interfaces_stats'\n\n  # Alerts\n  get 'v3/get_alerts'                        ,to: 'alerts#get_alerts'\n  post 'v3/acknowledge_alert'                ,to: 'alerts#acknowledge_alert'\n\n  # Interact\n  get 'v3/get_questionnaire_data'            ,to: 'interact#get_question_data'\n  get 'v3/get_map_data'                      ,to: 'interact#get_map'\n  \nend\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/config/routes.rb b/config/routes.rb
+--- a/config/routes.rb	(revision 0dbb0ab2874759dfb9742a8927a11eecd58bc7db)
++++ b/config/routes.rb	(date 1712565417207)
+@@ -3,7 +3,7 @@
+ 
+   resources :sessions, only: [:new, :create, :destroy, :forgot_password, :set_password, :signin]
+ 
+-  root to: redirect('/v2')
++#   root to: redirect('/v2')
+ 
+   get   '/robots.txt',                  to: 'application#robots'
+   get   '/signin',                      to: 'sessions#signin'
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"92096437-86b0-4c57-9f4e-75207ec27b15\" name=\"Default\" comment=\"\">\n      <change type=\"MODIFICATION\" beforePath=\"$PROJECT_DIR$/app/assets/javascripts/v2/controllers/header_controller.js\" afterPath=\"$PROJECT_DIR$/app/assets/javascripts/v2/controllers/header_controller.js\" />\n      <change type=\"MODIFICATION\" beforePath=\"$PROJECT_DIR$/app/assets/javascripts/v2/controllers/new_graph_controller.js\" afterPath=\"$PROJECT_DIR$/app/assets/javascripts/v2/controllers/new_graph_controller.js\" />\n      <change type=\"MODIFICATION\" beforePath=\"$PROJECT_DIR$/app/assets/javascripts/v2/directives/select_step_directive.js\" afterPath=\"$PROJECT_DIR$/app/assets/javascripts/v2/directives/select_step_directive.js\" />\n      <change type=\"MODIFICATION\" beforePath=\"$PROJECT_DIR$/app/assets/javascripts/v2/services/tab_service.js\" afterPath=\"$PROJECT_DIR$/app/assets/javascripts/v2/services/tab_service.js\" />\n      <change type=\"MODIFICATION\" beforePath=\"$PROJECT_DIR$/app/assets/stylesheets/v2/explore_setting.scss\" afterPath=\"$PROJECT_DIR$/app/assets/stylesheets/v2/explore_setting.scss\" />\n      <change type=\"MODIFICATION\" beforePath=\"$PROJECT_DIR$/app/assets/templates/v2/explore.jst.ejs.erb\" afterPath=\"$PROJECT_DIR$/app/assets/templates/v2/explore.jst.ejs.erb\" />\n      <change type=\"MODIFICATION\" beforePath=\"$PROJECT_DIR$/app/assets/templates/v2/explore_setting.jst.ejs.erb\" afterPath=\"$PROJECT_DIR$/app/assets/templates/v2/explore_setting.jst.ejs.erb\" />\n      <change type=\"MODIFICATION\" beforePath=\"$PROJECT_DIR$/app/assets/templates/v2/header.jst.ejs.erb\" afterPath=\"$PROJECT_DIR$/app/assets/templates/v2/header.jst.ejs.erb\" />\n      <change type=\"MODIFICATION\" beforePath=\"$PROJECT_DIR$/app/assets/templates/v2/select_step.jst.ejs.erb\" afterPath=\"$PROJECT_DIR$/app/assets/templates/v2/select_step.jst.ejs.erb\" />\n      <change type=\"MODIFICATION\" beforePath=\"$PROJECT_DIR$/app/views/application/v2_app.html.erb\" afterPath=\"$PROJECT_DIR$/app/views/application/v2_app.html.erb\" />\n    </list>\n    <ignored path=\"workships.iws\" />\n    <ignored path=\".idea/workspace.xml\" />\n    <ignored path=\"$PROJECT_DIR$/out/\" />\n    <option name=\"EXCLUDED_CONVERTED_TO_IGNORED\" value=\"true\" />\n    <option name=\"TRACKING_ENABLED\" value=\"true\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ChangesViewManager\" flattened_view=\"true\" show_ignored=\"false\" />\n  <component name=\"CreatePatchCommitExecutor\">\n    <option name=\"PATCH_PATH\" value=\"\" />\n  </component>\n  <component name=\"ExecutionTargetManager\" SELECTED_TARGET=\"default_target\" />\n  <component name=\"FavoritesManager\">\n    <favorites_list name=\"workships\" />\n  </component>\n  <component name=\"FileEditorManager\">\n    <leaf SIDE_TABS_SIZE_LIMIT_KEY=\"300\">\n      <file leaf-file-name=\"header.jst.ejs.erb\" pinned=\"false\" current-in-tab=\"false\">\n        <entry file=\"file://$PROJECT_DIR$/app/assets/templates/v2/header.jst.ejs.erb\">\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\n            <state vertical-scroll-proportion=\"0.0\">\n              <caret line=\"19\" column=\"34\" selection-start-line=\"19\" selection-start-column=\"34\" selection-end-line=\"19\" selection-end-column=\"34\" />\n              <folding />\n            </state>\n          </provider>\n        </entry>\n      </file>\n      <file leaf-file-name=\"header.scss\" pinned=\"false\" current-in-tab=\"true\">\n        <entry file=\"file://$PROJECT_DIR$/app/assets/stylesheets/v2/header.scss\">\n          <provider selected=\"true\" editor-type-id=\"text-editor\">\n            <state vertical-scroll-proportion=\"0.5182342\">\n              <caret line=\"30\" column=\"18\" selection-start-line=\"30\" selection-start-column=\"18\" selection-end-line=\"30\" selection-end-column=\"18\" />\n              <folding />\n            </state>\n          </provider>\n        </entry>\n      </file>\n    </leaf>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GradleLocalSettings\">\n    <option name=\"externalProjectsViewState\">\n      <projects_view />\n    </option>\n  </component>\n  <component name=\"ProjectFrameBounds\">\n    <option name=\"x\" value=\"1985\" />\n    <option name=\"y\" value=\"24\" />\n    <option name=\"width\" value=\"1855\" />\n    <option name=\"height\" value=\"1176\" />\n  </component>\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"false\">\n    <OptionsSetting value=\"true\" id=\"Add\" />\n    <OptionsSetting value=\"true\" id=\"Remove\" />\n    <OptionsSetting value=\"true\" id=\"Checkout\" />\n    <OptionsSetting value=\"true\" id=\"Update\" />\n    <OptionsSetting value=\"true\" id=\"Status\" />\n    <OptionsSetting value=\"true\" id=\"Edit\" />\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\n    <ConfirmationsSetting value=\"0\" id=\"Remove\" />\n  </component>\n  <component name=\"ProjectView\">\n    <navigator currentView=\"ProjectPane\" proportions=\"\" version=\"1\">\n      <flattenPackages />\n      <showMembers />\n      <showModules />\n      <showLibraryContents />\n      <hideEmptyPackages />\n      <abbreviatePackageNames />\n      <autoscrollToSource />\n      <autoscrollFromSource />\n      <sortByType />\n      <manualOrder />\n      <foldersAlwaysOnTop value=\"true\" />\n    </navigator>\n    <panes>\n      <pane id=\"Scratches\" />\n      <pane id=\"Scope\" />\n      <pane id=\"ProjectPane\">\n        <subPane>\n          <PATH>\n            <PATH_ELEMENT>\n              <option name=\"myItemId\" value=\"workships\" />\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode\" />\n            </PATH_ELEMENT>\n          </PATH>\n          <PATH>\n            <PATH_ELEMENT>\n              <option name=\"myItemId\" value=\"workships\" />\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode\" />\n            </PATH_ELEMENT>\n            <PATH_ELEMENT>\n              <option name=\"myItemId\" value=\"workships\" />\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode\" />\n            </PATH_ELEMENT>\n          </PATH>\n          <PATH>\n            <PATH_ELEMENT>\n              <option name=\"myItemId\" value=\"workships\" />\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode\" />\n            </PATH_ELEMENT>\n            <PATH_ELEMENT>\n              <option name=\"myItemId\" value=\"workships\" />\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode\" />\n            </PATH_ELEMENT>\n            <PATH_ELEMENT>\n              <option name=\"myItemId\" value=\"app\" />\n              <option name=\"myItemType\" value=\"com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode\" />\n            </PATH_ELEMENT>\n          </PATH>\n        </subPane>\n      </pane>\n      <pane id=\"PackagesPane\" />\n    </panes>\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.sourceCode.Other File Types\" />\n    <property name=\"settings.editor.splitter.proportion\" value=\"0.2\" />\n  </component>\n  <component name=\"RunManager\">\n    <configuration default=\"true\" type=\"#org.jetbrains.idea.devkit.run.PluginConfigurationType\" factoryName=\"Plugin\">\n      <module name=\"\" />\n      <option name=\"VM_PARAMETERS\" value=\"-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea\" />\n      <option name=\"PROGRAM_PARAMETERS\" />\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"AndroidRunConfigurationType\" factoryName=\"Android Application\">\n      <module name=\"\" />\n      <option name=\"ACTIVITY_CLASS\" value=\"\" />\n      <option name=\"MODE\" value=\"default_activity\" />\n      <option name=\"DEPLOY\" value=\"true\" />\n      <option name=\"ARTIFACT_NAME\" value=\"\" />\n      <option name=\"TARGET_SELECTION_MODE\" value=\"EMULATOR\" />\n      <option name=\"USE_LAST_SELECTED_DEVICE\" value=\"false\" />\n      <option name=\"PREFERRED_AVD\" value=\"\" />\n      <option name=\"USE_COMMAND_LINE\" value=\"true\" />\n      <option name=\"COMMAND_LINE\" value=\"\" />\n      <option name=\"WIPE_USER_DATA\" value=\"false\" />\n      <option name=\"DISABLE_BOOT_ANIMATION\" value=\"false\" />\n      <option name=\"NETWORK_SPEED\" value=\"full\" />\n      <option name=\"NETWORK_LATENCY\" value=\"none\" />\n      <option name=\"CLEAR_LOGCAT\" value=\"false\" />\n      <option name=\"SHOW_LOGCAT_AUTOMATICALLY\" value=\"true\" />\n      <option name=\"FILTER_LOGCAT_AUTOMATICALLY\" value=\"true\" />\n      <option name=\"SELECTED_CLOUD_MATRIX_CONFIGURATION_ID\" value=\"0\" />\n      <option name=\"SELECTED_CLOUD_MATRIX_PROJECT_ID\" value=\"\" />\n      <option name=\"SELECTED_CLOUD_DEVICE_CONFIGURATION_ID\" value=\"0\" />\n      <option name=\"SELECTED_CLOUD_DEVICE_PROJECT_ID\" value=\"\" />\n      <option name=\"IS_VALID_CLOUD_MATRIX_SELECTION\" value=\"false\" />\n      <option name=\"INVALID_CLOUD_MATRIX_SELECTION_ERROR\" value=\"\" />\n      <option name=\"IS_VALID_CLOUD_DEVICE_SELECTION\" value=\"false\" />\n      <option name=\"INVALID_CLOUD_DEVICE_SELECTION_ERROR\" value=\"\" />\n      <option name=\"CLOUD_DEVICE_SERIAL_NUMBER\" value=\"\" />\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"AndroidTestRunConfigurationType\" factoryName=\"Android Tests\">\n      <module name=\"\" />\n      <option name=\"TESTING_TYPE\" value=\"0\" />\n      <option name=\"INSTRUMENTATION_RUNNER_CLASS\" value=\"\" />\n      <option name=\"METHOD_NAME\" value=\"\" />\n      <option name=\"CLASS_NAME\" value=\"\" />\n      <option name=\"PACKAGE_NAME\" value=\"\" />\n      <option name=\"TARGET_SELECTION_MODE\" value=\"EMULATOR\" />\n      <option name=\"USE_LAST_SELECTED_DEVICE\" value=\"false\" />\n      <option name=\"PREFERRED_AVD\" value=\"\" />\n      <option name=\"USE_COMMAND_LINE\" value=\"true\" />\n      <option name=\"COMMAND_LINE\" value=\"\" />\n      <option name=\"WIPE_USER_DATA\" value=\"false\" />\n      <option name=\"DISABLE_BOOT_ANIMATION\" value=\"false\" />\n      <option name=\"NETWORK_SPEED\" value=\"full\" />\n      <option name=\"NETWORK_LATENCY\" value=\"none\" />\n      <option name=\"CLEAR_LOGCAT\" value=\"false\" />\n      <option name=\"SHOW_LOGCAT_AUTOMATICALLY\" value=\"true\" />\n      <option name=\"FILTER_LOGCAT_AUTOMATICALLY\" value=\"true\" />\n      <option name=\"SELECTED_CLOUD_MATRIX_CONFIGURATION_ID\" value=\"0\" />\n      <option name=\"SELECTED_CLOUD_MATRIX_PROJECT_ID\" value=\"\" />\n      <option name=\"SELECTED_CLOUD_DEVICE_CONFIGURATION_ID\" value=\"0\" />\n      <option name=\"SELECTED_CLOUD_DEVICE_PROJECT_ID\" value=\"\" />\n      <option name=\"IS_VALID_CLOUD_MATRIX_SELECTION\" value=\"false\" />\n      <option name=\"INVALID_CLOUD_MATRIX_SELECTION_ERROR\" value=\"\" />\n      <option name=\"IS_VALID_CLOUD_DEVICE_SELECTION\" value=\"false\" />\n      <option name=\"INVALID_CLOUD_DEVICE_SELECTION_ERROR\" value=\"\" />\n      <option name=\"CLOUD_DEVICE_SERIAL_NUMBER\" value=\"\" />\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"Applet\" factoryName=\"Applet\">\n      <option name=\"HTML_USED\" value=\"false\" />\n      <option name=\"WIDTH\" value=\"400\" />\n      <option name=\"HEIGHT\" value=\"300\" />\n      <option name=\"POLICY_FILE\" value=\"$APPLICATION_HOME_DIR$/bin/appletviewer.policy\" />\n      <module />\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"Application\" factoryName=\"Application\">\n      <extension name=\"coverage\" enabled=\"false\" merge=\"false\" sample_coverage=\"true\" runner=\"idea\" />\n      <option name=\"MAIN_CLASS_NAME\" />\n      <option name=\"VM_PARAMETERS\" />\n      <option name=\"PROGRAM_PARAMETERS\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"false\" />\n      <option name=\"ALTERNATIVE_JRE_PATH\" />\n      <option name=\"ENABLE_SWING_INSPECTOR\" value=\"false\" />\n      <option name=\"ENV_VARIABLES\" />\n      <option name=\"PASS_PARENT_ENVS\" value=\"true\" />\n      <module name=\"\" />\n      <envs />\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list />\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"JUnit\" factoryName=\"JUnit\">\n      <extension name=\"coverage\" enabled=\"false\" merge=\"false\" sample_coverage=\"true\" runner=\"idea\" />\n      <module name=\"\" />\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"false\" />\n      <option name=\"ALTERNATIVE_JRE_PATH\" />\n      <option name=\"PACKAGE_NAME\" />\n      <option name=\"MAIN_CLASS_NAME\" />\n      <option name=\"METHOD_NAME\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <option name=\"VM_PARAMETERS\" value=\"-ea\" />\n      <option name=\"PARAMETERS\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_DIR$\" />\n      <option name=\"ENV_VARIABLES\" />\n      <option name=\"PASS_PARENT_ENVS\" value=\"true\" />\n      <option name=\"TEST_SEARCH_SCOPE\">\n        <value defaultName=\"singleModule\" />\n      </option>\n      <envs />\n      <patterns />\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"JUnitTestDiscovery\" factoryName=\"JUnit Test Discovery\" changeList=\"All\">\n      <extension name=\"coverage\" enabled=\"false\" merge=\"false\" sample_coverage=\"true\" runner=\"idea\" />\n      <module name=\"\" />\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"false\" />\n      <option name=\"ALTERNATIVE_JRE_PATH\" />\n      <option name=\"PACKAGE_NAME\" />\n      <option name=\"MAIN_CLASS_NAME\" />\n      <option name=\"METHOD_NAME\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <option name=\"VM_PARAMETERS\" />\n      <option name=\"PARAMETERS\" />\n      <option name=\"WORKING_DIRECTORY\" />\n      <option name=\"ENV_VARIABLES\" />\n      <option name=\"PASS_PARENT_ENVS\" value=\"true\" />\n      <option name=\"TEST_SEARCH_SCOPE\">\n        <value defaultName=\"singleModule\" />\n      </option>\n      <envs />\n      <patterns />\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"JarApplication\" factoryName=\"JAR Application\">\n      <extension name=\"coverage\" enabled=\"false\" merge=\"false\" sample_coverage=\"true\" runner=\"idea\" />\n      <envs />\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"Java Scratch\" factoryName=\"Java Scratch\">\n      <extension name=\"coverage\" enabled=\"false\" merge=\"false\" sample_coverage=\"true\" runner=\"idea\" />\n      <option name=\"SCRATCH_FILE_ID\" value=\"0\" />\n      <option name=\"MAIN_CLASS_NAME\" />\n      <option name=\"VM_PARAMETERS\" />\n      <option name=\"PROGRAM_PARAMETERS\" />\n      <option name=\"WORKING_DIRECTORY\" />\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"false\" />\n      <option name=\"ALTERNATIVE_JRE_PATH\" />\n      <option name=\"ENABLE_SWING_INSPECTOR\" value=\"false\" />\n      <option name=\"ENV_VARIABLES\" />\n      <option name=\"PASS_PARENT_ENVS\" value=\"true\" />\n      <module name=\"\" />\n      <envs />\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"JetRunConfigurationType\" factoryName=\"Kotlin\">\n      <extension name=\"coverage\" enabled=\"false\" merge=\"false\" sample_coverage=\"true\" runner=\"idea\" />\n      <option name=\"MAIN_CLASS_NAME\" />\n      <option name=\"VM_PARAMETERS\" />\n      <option name=\"PROGRAM_PARAMETERS\" />\n      <option name=\"WORKING_DIRECTORY\" />\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"false\" />\n      <option name=\"ALTERNATIVE_JRE_PATH\" />\n      <option name=\"PASS_PARENT_ENVS\" value=\"true\" />\n      <module name=\"workships\" />\n      <envs />\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"Remote\" factoryName=\"Remote\">\n      <option name=\"USE_SOCKET_TRANSPORT\" value=\"true\" />\n      <option name=\"SERVER_MODE\" value=\"false\" />\n      <option name=\"SHMEM_ADDRESS\" value=\"javadebug\" />\n      <option name=\"HOST\" value=\"localhost\" />\n      <option name=\"PORT\" value=\"5005\" />\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"TestNG\" factoryName=\"TestNG\">\n      <extension name=\"coverage\" enabled=\"false\" merge=\"false\" sample_coverage=\"true\" runner=\"idea\" />\n      <module name=\"\" />\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"false\" />\n      <option name=\"ALTERNATIVE_JRE_PATH\" />\n      <option name=\"SUITE_NAME\" />\n      <option name=\"PACKAGE_NAME\" />\n      <option name=\"MAIN_CLASS_NAME\" />\n      <option name=\"METHOD_NAME\" />\n      <option name=\"GROUP_NAME\" />\n      <option name=\"TEST_OBJECT\" value=\"CLASS\" />\n      <option name=\"VM_PARAMETERS\" value=\"-ea\" />\n      <option name=\"PARAMETERS\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_DIR$\" />\n      <option name=\"OUTPUT_DIRECTORY\" />\n      <option name=\"ANNOTATION_TYPE\" />\n      <option name=\"ENV_VARIABLES\" />\n      <option name=\"PASS_PARENT_ENVS\" value=\"true\" />\n      <option name=\"TEST_SEARCH_SCOPE\">\n        <value defaultName=\"singleModule\" />\n      </option>\n      <option name=\"USE_DEFAULT_REPORTERS\" value=\"false\" />\n      <option name=\"PROPERTIES_FILE\" />\n      <envs />\n      <properties />\n      <listeners />\n      <method />\n    </configuration>\n    <configuration default=\"true\" type=\"TestNGTestDiscovery\" factoryName=\"TestNG Test Discovery\" changeList=\"All\">\n      <extension name=\"coverage\" enabled=\"false\" merge=\"false\" sample_coverage=\"true\" runner=\"idea\" />\n      <module name=\"\" />\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"false\" />\n      <option name=\"ALTERNATIVE_JRE_PATH\" />\n      <option name=\"SUITE_NAME\" />\n      <option name=\"PACKAGE_NAME\" />\n      <option name=\"MAIN_CLASS_NAME\" />\n      <option name=\"METHOD_NAME\" />\n      <option name=\"GROUP_NAME\" />\n      <option name=\"TEST_OBJECT\" value=\"CLASS\" />\n      <option name=\"VM_PARAMETERS\" />\n      <option name=\"PARAMETERS\" />\n      <option name=\"WORKING_DIRECTORY\" />\n      <option name=\"OUTPUT_DIRECTORY\" />\n      <option name=\"ANNOTATION_TYPE\" />\n      <option name=\"ENV_VARIABLES\" />\n      <option name=\"PASS_PARENT_ENVS\" value=\"true\" />\n      <option name=\"TEST_SEARCH_SCOPE\">\n        <value defaultName=\"singleModule\" />\n      </option>\n      <option name=\"USE_DEFAULT_REPORTERS\" value=\"false\" />\n      <option name=\"PROPERTIES_FILE\" />\n      <envs />\n      <properties />\n      <listeners />\n      <method />\n    </configuration>\n  </component>\n  <component name=\"ShelveChangesManager\" show_recycled=\"false\" />\n  <component name=\"SvnConfiguration\">\n    <configuration />\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"92096437-86b0-4c57-9f4e-75207ec27b15\" name=\"Default\" comment=\"\" />\n      <created>1450862690138</created>\n      <option name=\"number\" value=\"Default\" />\n      <updated>1450862690138</updated>\n    </task>\n    <servers />\n  </component>\n  <component name=\"ToolWindowManager\">\n    <frame x=\"1985\" y=\"24\" width=\"1855\" height=\"1176\" extended-state=\"6\" />\n    <editor active=\"false\" />\n    <layout>\n      <window_info id=\"UI Designer\" active=\"false\" anchor=\"left\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"2\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Palette&#9;\" active=\"false\" anchor=\"left\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"2\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Designer\" active=\"false\" anchor=\"right\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"3\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Terminal\" active=\"false\" anchor=\"bottom\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"7\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"TODO\" active=\"false\" anchor=\"bottom\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"6\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Palette\" active=\"false\" anchor=\"right\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"3\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Ant Build\" active=\"false\" anchor=\"right\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.25\" sideWeight=\"0.5\" order=\"1\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Structure\" active=\"false\" anchor=\"left\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.25\" sideWeight=\"0.5\" order=\"1\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Maven Projects\" active=\"false\" anchor=\"right\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"3\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Project\" active=\"false\" anchor=\"left\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"true\" show_stripe_button=\"true\" weight=\"0.13908356\" sideWeight=\"0.5\" order=\"0\" side_tool=\"false\" content_ui=\"combo\" />\n      <window_info id=\"Favorites\" active=\"false\" anchor=\"left\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"2\" side_tool=\"true\" content_ui=\"tabs\" />\n      <window_info id=\"Event Log\" active=\"false\" anchor=\"bottom\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"7\" side_tool=\"true\" content_ui=\"tabs\" />\n      <window_info id=\"Version Control\" active=\"false\" anchor=\"bottom\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"7\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Cvs\" active=\"false\" anchor=\"bottom\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.25\" sideWeight=\"0.5\" order=\"4\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Message\" active=\"false\" anchor=\"bottom\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"0\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Find\" active=\"false\" anchor=\"bottom\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"1\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Debug\" active=\"false\" anchor=\"bottom\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.4\" sideWeight=\"0.5\" order=\"3\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Commander\" active=\"false\" anchor=\"right\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.4\" sideWeight=\"0.5\" order=\"0\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Run\" active=\"false\" anchor=\"bottom\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.33\" sideWeight=\"0.5\" order=\"2\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Inspection\" active=\"false\" anchor=\"bottom\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.4\" sideWeight=\"0.5\" order=\"5\" side_tool=\"false\" content_ui=\"tabs\" />\n      <window_info id=\"Hierarchy\" active=\"false\" anchor=\"right\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"false\" show_stripe_button=\"true\" weight=\"0.25\" sideWeight=\"0.5\" order=\"2\" side_tool=\"false\" content_ui=\"combo\" />\n    </layout>\n  </component>\n  <component name=\"Vcs.Log.UiProperties\">\n    <option name=\"RECENTLY_FILTERED_USER_GROUPS\">\n      <collection />\n    </option>\n    <option name=\"RECENTLY_FILTERED_BRANCH_GROUPS\">\n      <collection />\n    </option>\n  </component>\n  <component name=\"VcsContentAnnotationSettings\">\n    <option name=\"myLimit\" value=\"2678400000\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager />\n    <watches-manager />\n  </component>\n  <component name=\"editorHistoryManager\">\n    <entry file=\"file://$PROJECT_DIR$/app/assets/templates/v2/header.jst.ejs.erb\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state vertical-scroll-proportion=\"0.0\">\n          <caret line=\"0\" column=\"0\" selection-start-line=\"0\" selection-start-column=\"0\" selection-end-line=\"0\" selection-end-column=\"0\" />\n          <folding />\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/app/assets/stylesheets/v2/header.scss\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state vertical-scroll-proportion=\"0.0\">\n          <caret line=\"15\" column=\"16\" selection-start-line=\"15\" selection-start-column=\"16\" selection-end-line=\"15\" selection-end-column=\"16\" />\n          <folding />\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/app/assets/templates/v2/header.jst.ejs.erb\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state vertical-scroll-proportion=\"0.0\">\n          <caret line=\"19\" column=\"34\" selection-start-line=\"19\" selection-start-column=\"34\" selection-end-line=\"19\" selection-end-column=\"34\" />\n          <folding />\n        </state>\n      </provider>\n    </entry>\n    <entry file=\"file://$PROJECT_DIR$/app/assets/stylesheets/v2/header.scss\">\n      <provider selected=\"true\" editor-type-id=\"text-editor\">\n        <state vertical-scroll-proportion=\"0.5182342\">\n          <caret line=\"30\" column=\"18\" selection-start-line=\"30\" selection-start-column=\"18\" selection-end-line=\"30\" selection-end-column=\"18\" />\n          <folding />\n        </state>\n      </provider>\n    </entry>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0dbb0ab2874759dfb9742a8927a11eecd58bc7db)
++++ b/.idea/workspace.xml	(date 1712566044010)
+@@ -1,35 +1,23 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="ChangeListManager">
+     <list default="true" id="92096437-86b0-4c57-9f4e-75207ec27b15" name="Default" comment="">
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/v2/controllers/header_controller.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/v2/controllers/header_controller.js" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/v2/controllers/new_graph_controller.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/v2/controllers/new_graph_controller.js" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/v2/directives/select_step_directive.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/v2/directives/select_step_directive.js" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/v2/services/tab_service.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/v2/services/tab_service.js" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/v2/explore_setting.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/v2/explore_setting.scss" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/v2/explore.jst.ejs.erb" afterPath="$PROJECT_DIR$/app/assets/templates/v2/explore.jst.ejs.erb" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/v2/explore_setting.jst.ejs.erb" afterPath="$PROJECT_DIR$/app/assets/templates/v2/explore_setting.jst.ejs.erb" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/v2/header.jst.ejs.erb" afterPath="$PROJECT_DIR$/app/assets/templates/v2/header.jst.ejs.erb" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/v2/select_step.jst.ejs.erb" afterPath="$PROJECT_DIR$/app/assets/templates/v2/select_step.jst.ejs.erb" />
+-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/application/v2_app.html.erb" afterPath="$PROJECT_DIR$/app/views/application/v2_app.html.erb" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+     </list>
+-    <ignored path="workships.iws" />
+-    <ignored path=".idea/workspace.xml" />
+-    <ignored path="$PROJECT_DIR$/out/" />
+-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+-    <option name="TRACKING_ENABLED" value="true" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+   <component name="CreatePatchCommitExecutor">
+     <option name="PATCH_PATH" value="" />
+-  </component>
+-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+-  <component name="FavoritesManager">
+-    <favorites_list name="workships" />
+   </component>
+   <component name="FileEditorManager">
+     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+@@ -56,6 +44,11 @@
+     </leaf>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="interest-question" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="GradleLocalSettings">
+@@ -63,21 +56,21 @@
+       <projects_view />
+     </option>
+   </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 6
++}</component>
+   <component name="ProjectFrameBounds">
+     <option name="x" value="1985" />
+     <option name="y" value="24" />
+     <option name="width" value="1855" />
+     <option name="height" value="1176" />
+   </component>
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+-    <OptionsSetting value="true" id="Add" />
+-    <OptionsSetting value="true" id="Remove" />
+-    <OptionsSetting value="true" id="Checkout" />
+-    <OptionsSetting value="true" id="Update" />
+-    <OptionsSetting value="true" id="Status" />
+-    <OptionsSetting value="true" id="Edit" />
++  <component name="ProjectId" id="2efjXsL0IjmkzQqNbDk8AwRTCq6" />
++  <component name="ProjectLevelVcsManager">
+     <ConfirmationsSetting value="1" id="Add" />
+-    <ConfirmationsSetting value="0" id="Remove" />
+   </component>
+   <component name="ProjectView">
+     <navigator currentView="ProjectPane" proportions="" version="1">
+@@ -133,17 +126,26 @@
+       <pane id="PackagesPane" />
+     </panes>
+   </component>
+-  <component name="PropertiesComponent">
+-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Other File Types" />
+-    <property name="settings.editor.splitter.proportion" value="0.2" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
+   </component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;question-selection&quot;,
++    &quot;last_opened_file_path&quot;: &quot;/Users/macintoshhd/Documents/InterestQuestion/workships-v3&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  }
++}</component>
+   <component name="RunManager">
+-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+-      <module name="" />
+-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+-      <option name="PROGRAM_PARAMETERS" />
+-      <method />
+-    </configuration>
+     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+       <module name="" />
+       <option name="ACTIVITY_CLASS" value="" />
+@@ -242,7 +244,7 @@
+       </ExternalSystemSettings>
+       <method />
+     </configuration>
+-    <configuration default="true" type="JUnit" factoryName="JUnit">
++    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
+       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+       <module name="" />
+       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+@@ -251,9 +253,9 @@
+       <option name="MAIN_CLASS_NAME" />
+       <option name="METHOD_NAME" />
+       <option name="TEST_OBJECT" value="class" />
+-      <option name="VM_PARAMETERS" value="-ea" />
++      <option name="VM_PARAMETERS" />
+       <option name="PARAMETERS" />
+-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
++      <option name="WORKING_DIRECTORY" />
+       <option name="ENV_VARIABLES" />
+       <option name="PASS_PARENT_ENVS" value="true" />
+       <option name="TEST_SEARCH_SCOPE">
+@@ -263,7 +265,7 @@
+       <patterns />
+       <method />
+     </configuration>
+-    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
++    <configuration default="true" type="JUnit" factoryName="JUnit">
+       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+       <module name="" />
+       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+@@ -272,9 +274,9 @@
+       <option name="MAIN_CLASS_NAME" />
+       <option name="METHOD_NAME" />
+       <option name="TEST_OBJECT" value="class" />
+-      <option name="VM_PARAMETERS" />
++      <option name="VM_PARAMETERS" value="-ea" />
+       <option name="PARAMETERS" />
+-      <option name="WORKING_DIRECTORY" />
++      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+       <option name="ENV_VARIABLES" />
+       <option name="PASS_PARENT_ENVS" value="true" />
+       <option name="TEST_SEARCH_SCOPE">
+@@ -326,7 +328,7 @@
+       <option name="PORT" value="5005" />
+       <method />
+     </configuration>
+-    <configuration default="true" type="TestNG" factoryName="TestNG">
++    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+       <module name="" />
+       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+@@ -337,9 +339,9 @@
+       <option name="METHOD_NAME" />
+       <option name="GROUP_NAME" />
+       <option name="TEST_OBJECT" value="CLASS" />
+-      <option name="VM_PARAMETERS" value="-ea" />
++      <option name="VM_PARAMETERS" />
+       <option name="PARAMETERS" />
+-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
++      <option name="WORKING_DIRECTORY" />
+       <option name="OUTPUT_DIRECTORY" />
+       <option name="ANNOTATION_TYPE" />
+       <option name="ENV_VARIABLES" />
+@@ -354,7 +356,7 @@
+       <listeners />
+       <method />
+     </configuration>
+-    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
++    <configuration default="true" type="TestNG" factoryName="TestNG">
+       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+       <module name="" />
+       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+@@ -365,9 +367,9 @@
+       <option name="METHOD_NAME" />
+       <option name="GROUP_NAME" />
+       <option name="TEST_OBJECT" value="CLASS" />
+-      <option name="VM_PARAMETERS" />
++      <option name="VM_PARAMETERS" value="-ea" />
+       <option name="PARAMETERS" />
+-      <option name="WORKING_DIRECTORY" />
++      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+       <option name="OUTPUT_DIRECTORY" />
+       <option name="ANNOTATION_TYPE" />
+       <option name="ENV_VARIABLES" />
+@@ -380,10 +382,16 @@
+       <envs />
+       <properties />
+       <listeners />
++      <method />
++    </configuration>
++    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
++      <module name="" />
++      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
++      <option name="PROGRAM_PARAMETERS" />
+       <method />
+     </configuration>
+   </component>
+-  <component name="ShelveChangesManager" show_recycled="false" />
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="SvnConfiguration">
+     <configuration />
+   </component>
+@@ -392,7 +400,10 @@
+       <changelist id="92096437-86b0-4c57-9f4e-75207ec27b15" name="Default" comment="" />
+       <created>1450862690138</created>
+       <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
+       <updated>1450862690138</updated>
++      <workItem from="1712302570360" duration="10396000" />
++      <workItem from="1712330168817" duration="7516000" />
+     </task>
+     <servers />
+   </component>
+@@ -422,6 +433,32 @@
+       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+     </layout>
++  </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="question-selection" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
++          </value>
++        </entry>
++      </map>
++    </option>
+   </component>
+   <component name="Vcs.Log.UiProperties">
+     <option name="RECENTLY_FILTERED_USER_GROUPS">
+@@ -430,13 +467,6 @@
+     <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+       <collection />
+     </option>
+-  </component>
+-  <component name="VcsContentAnnotationSettings">
+-    <option name="myLimit" value="2678400000" />
+-  </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager />
+-    <watches-manager />
+   </component>
+   <component name="editorHistoryManager">
+     <entry file="file://$PROJECT_DIR$/app/assets/templates/v2/header.jst.ejs.erb">
+Index: Gemfile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>source 'https://rubygems.org'\n\nruby '3.2.2'\ngem 'rails', '~> 6.1'\n#gem 'clockwork'\ngem 'pundit'\ngem 'bcrypt'\ngem 'pg',  '~> 1.5', '>= 1.5.4'\ngem 'descriptive-statistics'\ngem 'writeexcel'\ngem 'fastimage'\ngem 'oj'\ngem 'oj_mimic_json'\ngem 'backup', '3.4.0'\ngem 'activerecord'\n#gem 'tiny_tds'\n#gem 'activerecord-sqlserver-adapter'\ngem 'dotenv'\ngem 'meta_request'\ngem 'literate_randomizer', '~> 0.4.0'\ngem 'delayed_job_active_record'\ngem 'hirb'\ngem 'rack-cors'\ngem 'jwt'\ngem 'thor'\ngem 'nmatrix', git: 'https://github.com/tree-tech-il/nmatrix.git', branch: 'ruby_3_2_compatibility'\ngem 'tzinfo-data'\ngem 'awesome_print'\ngem 'sidekiq', '5.2.9'\ngem 'redis'\ngem 'pdfkit'\ngem 'webdrivers'\ngem 'selenium'\n\ngroup :production, :onpremise, :development do\n  gem 'mail'\n  gem 'write_xlsx'\n  gem 'net-sftp'\n  gem 'nokogiri'\n  gem 'roo'\n  gem 'roo-xls', '~>1.1.0'\n  gem 'dalli'\n  #gem 'therubyracer'\n  gem 'mini_racer'\n  gem 'sassc-rails'\n  gem 'uglifier'\n  gem 'ejs'\n  #gem 'yui-compressor'\n  gem 'sprockets'\n  gem 'sprockets-rails'\n  gem 'font-awesome-rails'\n  gem 'twilio-ruby' ,'5.4.5'\n  gem \"jqcloud-rails\"\n  gem \"daemons\"\n  gem 'colorize'\n  gem 'aws-sdk', '~> 3.0.0.rc1'\nend\n\ngroup :development, :test do\n  gem 'spork'\n  gem 'rspec'\n  gem 'rspec-core'  \n  gem 'rspec-rails', '~> 6.0', '>= 6.0.3'  # gem 'transpec'\n  gem 'seed_dump'\n  gem 'puma', '~> 3.7'\n  gem 'byebug'\n  #gem 'solargraph'\n  \nend\n\ngroup :test do\n  gem 'factory_bot'\n  gem 'database_cleaner'\n  gem 'jasmine-rails'\n  gem 'simplecov'\n  gem 'rubyXL'\nend\n\ngroup :production do\n  #gem 'heroku-deflater'\n  #gem 'wkhtmltopdf-heroku'\n\nend\n\ngroup :production, :onpremise do\n  gem 'passenger', '5.3.4'\n  gem 'rails_12factor', '0.0.2'\nend\n\n#post rails 6 upgrade\ngem 'net-ftp'\n\ngem 'prawn'\ngem 'prawn-templates'\ngem 'pdf-reader'\ngem 'hexapdf'
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Gemfile b/Gemfile
+--- a/Gemfile	(revision 0dbb0ab2874759dfb9742a8927a11eecd58bc7db)
++++ b/Gemfile	(date 1712565417213)
+@@ -41,7 +41,7 @@
+   gem 'roo-xls', '~>1.1.0'
+   gem 'dalli'
+   #gem 'therubyracer'
+-  gem 'mini_racer'
++#   gem 'mini_racer'
+   gem 'sassc-rails'
+   gem 'uglifier'
+   gem 'ejs'
+@@ -63,7 +63,6 @@
+   gem 'rspec-rails', '~> 6.0', '>= 6.0.3'  # gem 'transpec'
+   gem 'seed_dump'
+   gem 'puma', '~> 3.7'
+-  gem 'byebug'
+   #gem 'solargraph'
+   
+ end
+@@ -93,4 +92,4 @@
+ gem 'prawn'
+ gem 'prawn-templates'
+ gem 'pdf-reader'
+-gem 'hexapdf'
+\ No newline at end of file
++gem 'hexapdf'

@@ -1,0 +1,87 @@
+<div ng-if="mobile_app_service.isLangRtl()" ng-controller="firstEnterController"  ng-init="init()" >
+  <div class='mobile-content' id="main_container" >
+    <div class='page_content'>
+      <div class="welcome-message" style='height: {{container_height}}'>
+        <h1 class='page_title' style="padding-bottom: 3rem" dir='rtl' >{{mobile_app_service.t('hello')}}<%#= I18n.t('questionnaire.hi') %> {{mobile_app_service.getUserName()}}</h1>
+          <ul class="list-group-welcome-rtl" style="font-size: 1.15rem ;list-style: none;">
+          <li>
+            <span ng-bind-html="mobile_app_service.t('text_first_enter2_1')">
+               <%#= I18n.t('questionnaire.text_first_enter2_1') %>
+            </span>
+          </li>
+          <li>
+            <span ng-bind-html="mobile_app_service.t('text_first_enter2_2')">
+              <%#= I18n.t('questionnaire.text_first_enter2_2') %>
+            </span>
+          </li>
+          <li>
+            <span ng-bind-html="mobile_app_service.t('text_first_enter2_3')">
+              <%#= I18n.t('questionnaire.text_first_enter2_3') %>
+            </span>
+          </li>
+          <li style="padding-top: 15px;padding-bottom: 15px;">
+            <div style="border-bottom: 5px solid orange;"></div>
+          </li>
+          <li>
+            <span ng-bind-html="mobile_app_service.t('text_first_enter2_4')">
+              <%#= I18n.t('questionnaire.text_first_enter2_4') %>
+            </span>
+          </li>
+          <li style="margin-top: 10% ">
+            <div>
+              <img ng-src="/assets/step_ahead_logo.png"  width="100%">
+              <%#= asset_path 'logo-medium.png' %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class='mobile-footer'>
+    <div class='mobile-btns-container'>
+      <div class='center-button' ng-click='mobile_app_service.setFirstEnterView()'>{{mobile_app_service.t('continue_button')}}<%#= I18n.t('questionnaire.continue_button') %> </div>
+    </div>
+  </div>
+</div>
+<div ng-if="!mobile_app_service.isLangRtl()" ng-controller="firstEnterController" ng-init="init()" >
+  <div class='mobile-content' id="main_container" >
+    <div class='page_content'>
+      <div class="welcome-message" style='height: {{container_height}}'>
+        <h1 class='page_title' style="padding-bottom: 3rem" dir='rtl' >{{mobile_app_service.t('hello')}}<%#= I18n.t('questionnaire.hi') %> {{mobile_app_service.getUserName()}}</h1>
+        <ul class="list-group-welcome-ltr" style="font-size: 13pt ;list-style: none;">
+          <li>
+            <span ng-bind-html="mobile_app_service.t('text_first_enter2_1')">
+               <%#= I18n.t('questionnaire.text_first_enter2_1') %>
+            </span>
+          </li>
+          <li>
+            <span ng-bind-html="mobile_app_service.t('text_first_enter2_2')">
+              <%#= I18n.t('questionnaire.text_first_enter2_2') %>
+            </span>
+          </li>
+          <li>
+            <span ng-bind-html="mobile_app_service.t('text_first_enter2_3')">
+              <%#= I18n.t('questionnaire.text_first_enter2_3') %>
+            </span>
+          </li>
+          <li style="margin-top: 15rem">
+            <span ng-bind-html="mobile_app_service.t('text_first_enter2_4')">
+              <%#= I18n.t('questionnaire.text_first_enter2_4') %>
+            </span>
+          </li>
+          <li>
+            <div style="margin-top: 10% ">
+              <img ng-src="/assets/step_ahead_logo.png"  width="100%">
+              <%#= asset_path 'logo-medium.png' %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class='mobile-footer'>
+    <div class='mobile-btns-container'>
+      <div class='center-button' ng-click='mobile_app_service.setFirstEnterView()'>{{mobile_app_service.t('continue_button')}}<%#= I18n.t('questionnaire.continue_button') %> </div>
+    </div>
+  </div>
+</div>
