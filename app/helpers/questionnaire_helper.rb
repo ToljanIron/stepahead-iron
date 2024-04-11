@@ -34,9 +34,7 @@ module QuestionnaireHelper
   # Returns a questionnaire's state
   ##############################################################################
   def get_questionnaire_details(token)
-    logger = Logger.new('log/my_log.log')
     qp = QuestionnaireParticipant.find_by(token: token)
-    logger.debug(qp)
     raise "Not found participant with token: #{token}" if qp.nil?
     raise "Inactive participant" if !qp.active
 
@@ -82,7 +80,7 @@ module QuestionnaireHelper
                         .where(questionnaire_id: aq.id, active: true).count
     employee = (qp.employee_id != -1 ? Employee.find(qp.employee_id) : Employee.new)
     language = aq.language_id ? Language.find(aq.language_id).name : 'English'
-    logger.close
+
     return {
       q_state: aq.state,
       qp_state: qp.status,
@@ -113,8 +111,8 @@ module QuestionnaireHelper
       language: language,
       is_snowball_q:aq.is_snowball_q,
       snowball_enable_autocomplete:  aq.snowball_enable_autocomplete,
-      is_selection_question: qq.is_selection_question,
-      selection_question_options: qq.selection_question_options
+      is_selection_question: qq&.is_selection_question,
+      selection_question_options: qq&.selection_question_options
     }
   end
 
@@ -143,7 +141,6 @@ module QuestionnaireHelper
   def get_question_participants(token, qd=nil, is_desktop=false)
     logger = Logger.new('log/my_log.log')
     qd = get_questionnaire_details(token) if qd.nil?
-    logger.debug(qd)
     qid  = qd[:questionnaire_id]
     qqid = qd[:question_id]
     qpid = qd[:qpid]
@@ -165,22 +162,15 @@ module QuestionnaireHelper
     else
       if !qd[:depends_on_question].nil?
         base_list = get_qps_from_question_replies(qid, funnel_question_id, qpid)
-        logger.debug("Это base_list:")
-        logger.debug(base_list)
       else
         if qd[:use_employee_connections]
           base_list = get_qps_from_employees_connections(eid)
         else
           base_list = get_qps_from_questionnaire_participants(qid, qpid)
-          logger.debug("Это base_list: #{base_list}")
-
         end
       end
-      logger.debug( qd[:selection_question_options].length > 0)
       client_min_replies = is_desktop ? 0    : base_list.length
-      logger.debug(client_min_replies)
-      client_max_replies =qd[:is_selection_question] ? 1 : base_list.length
-      logger.debug(client_max_replies)
+      client_max_replies = base_list.length
     end
 
     answered_list = QuestionReply

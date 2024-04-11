@@ -78,8 +78,7 @@
       </div>
 
     </div>
-    <div ng-show='!isFinished() && isLoaded() && !is_snowball_q_first_step'>
-
+    <div ng-show='!isFinished() && isLoaded() && !is_snowball_q_first_step' class="modal-content">
       <!--       <div class="mobile_search_container" ng-if='display_search()'>
         <div class='mobile_search_tab'>
           <input ng-if="!mobile_app_service.isLangRtl()" class='mobile_search_text' type='text' placeholder="{{mobile_app_service.t('search')}}" ng-model="search_input.text" typeahead="search_node.name for search_node in search_list() | filter:$viewValue |  limitTo:5" typeahead-on-select='showConfirmBox($item,r.question_id); search_input.text=""'/>
@@ -89,15 +88,15 @@
           <input ng-if="mobile_app_service.isLangRtl()" dir='rtl' class='mobile_search_text_rtl' type='text' placeholder="{{mobile_app_service.t('search')}}" ng-model="search_input.text" typeahead="search_node.name for search_node in search_list() | filter:$viewValue |  limitTo:5" typeahead-on-select='showConfirmBox($item,r.question_id); search_input.text=""'/>
         </div>
       </div> -->
-      <div ng-if="r.is_selection_question">
-       <form class="modal-form" ng-submit="submitInterestQuestionForm()">
+      <div ng-if="interestQuestionForm" class="modal">
+         <form ng-submit="submitInterestQuestionForm()">
            <div class="form-group mobile">
-               <div style="width:75%;margin-top:30%">
+               <div style="width:75%;margin-top:40%">
                    <select class="modal-input-select"
                            id="interestQuestion"
                            name="interestQuestion"
                            ng-model="interestQuestion.selectedOption"
-                           ng-options="option.name as option.name for option in r.selection_question_options"
+                           ng-options="option.name as option.name for option in selection_question_options"
                            required>
                        <option value="">Select an interest</option>
                    </select>
@@ -106,9 +105,9 @@
            <div class="form-group mobile">
                <button type="submit" class="save-button">{{mobile_app_service.t('save')}}</button>
            </div>
-       </form>
+         </form>
       </div>
-      <div ng-if="!r.is_selection_question">
+      <div ng-if="!interestQuestionForm">
         <slot-machine-directive height='{{heightOfContainer}}' value='currentlyFocusedEmployeeId' on-select-class="zoom-avatar" swipe='swipe' loaded='isLoaded()' load-more='loadMore'>
           <div ng-repeat="employee_response in tiny_array" value='{{employee_response.employee_id}}' class='slot-machine' ng-if='employeeDoesNotHaveResponseForQuestion(r.question_id, employee_response.employee_id) || searchAdded(employee_response.employee_id)'>
             <div class="employee-item">
@@ -306,12 +305,12 @@
       <!-- Modal window -->
     </div>
     <div ng-if="!mobile_app_service.isLangRtl()" class="mobile-footer">
-      <div ng-if="r.is_selection_question" class="mobile-btns-container ltr">
+      <div ng-if="interestQuestionForm" class="mobile-btns-container ltr">
          <button class="right-button search-btn" style="width:100%" ng-class='{finished: canFinish(), disabled: !canFinish()}' ng-click='minMaxOnFinish()'>
            <span class="continue">המשך</span>
          </button>
       </div>
-      <div class="mobile-btns-container ltr" ng-if="!r.is_selection_question">
+      <div class="mobile-btns-container ltr" ng-if="!interestQuestionForm">
         <button class="right-button search-btn" ng-class='{finished: canFinish(), disabled: !canFinish()}' ng-show="is_snowball_q_first_step" ng-click='minMaxOnFinish()'>
           <span class="continue">המשך</span>
         </button>
@@ -329,27 +328,27 @@
       </div>
 
       <div class="modal-backdrop mobile" ng-click="checkIfAutoCompleteListIsOpenAndCloseIt($event)" ng-show="showModal"></div>
-      <div class="modal" ng-click="checkIfAutoCompleteListIsOpenAndCloseIt($event)" ng-show="showModal">
-        <div ng-if="r.is_selection_question">
+      <div class="modal" style="padding-top:20%" ng-click="checkIfAutoCompleteListIsOpenAndCloseIt($event)" ng-show="showModal">
+        <div ng-if="interestQuestionForm">
          <form class="modal-form" ng-submit="submitInterestQuestionForm()">
              <div class="form-group mobile">
-                 <div style="width:75%;margin-top:30%">
+                 <div style="width:75%;margin-top:40%">
                      <select class="modal-input-select"
                              id="interestQuestion"
                              name="interestQuestion"
                              ng-model="interestQuestion.selectedOption"
-                             ng-options="option.name as option.name for option in r.selection_question_options"
+                             ng-options="option.name as option.name for option in selection_question_options"
                              required>
                          <option value="">Select an interest</option>
                      </select>
                  </div>
              </div>
-             <div class="form-group mobile">
+            <div class="form-group mobile">
                  <button type="submit" class="save-button">{{mobile_app_service.t('save')}}</button>
              </div>
          </form>
         </div>
-        <div class="modal-content" ng-if="!r.is_selection_question">
+        <div class="modal-content" ng-if="!interestQuestionForm">
           <!--        <span class="close-button" ng-click="closeModalFunc()">×</span>-->
           <form class="modal-form" ng-submit="submitUnverifiedEmployeeForm()">
             <div class="header">

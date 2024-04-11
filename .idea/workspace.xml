@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92096437-86b0-4c57-9f4e-75207ec27b15" name="Default" comment="Project Initialization" />
+    <list default="true" id="92096437-86b0-4c57-9f4e-75207ec27b15" name="Default" comment="Project Initialization">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/mobile/controllers/mobile_questionnaire_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/javascripts/mobile/controllers/mobile_questionnaire_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/templates/mobile/questionnaire.jst.ejs.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/templates/mobile/questionnaire.jst.ejs.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/questionnaire_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/questionnaire_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/questionnaire_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/questionnaire_helper.rb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,7 +135,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "question-selection",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "/Users/macintoshhd/Documents/InterestQuestion/workships-v3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -399,7 +405,7 @@
       <updated>1450862690138</updated>
       <workItem from="1712302570360" duration="10396000" />
       <workItem from="1712330168817" duration="16499000" />
-      <workItem from="1712578576363" duration="46133000" />
+      <workItem from="1712578576363" duration="62904000" />
     </task>
     <task id="LOCAL-00001" summary="Project Initialization">
       <option name="closed" value="true" />
@@ -464,7 +470,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="question-selection" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>

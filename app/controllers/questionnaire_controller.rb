@@ -114,19 +114,19 @@ class QuestionnaireController < ApplicationController
   end
 
   def add_unverfied_participant
-    
+
     authorize :application, :passthrough
     token = sanitize_alphanumeric(params[:token])
    raise "No such token" if token.nil?
     permitted = request.params
-    
+
     res=Questionnaire.create_unverified_participant_employee(permitted)
-    
+
     unv_employee=res[:employee]
     unv_participant_id=res[:qpid]
     res = (res[:msg].empty? ? {status: 'ok',e_id:unv_employee.id, name:[unv_employee.first_name,unv_employee.last_name].join(" "),qpid:unv_participant_id, image_url:nil}: {status: 'fail', reason: msg});
     res = Oj.dump(res)
-    
+
     render json: res
   end
 

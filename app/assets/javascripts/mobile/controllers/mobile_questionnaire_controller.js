@@ -17,6 +17,8 @@ angular.module('workships-mobile')
 
     var q = $scope.questions_to_answer;
     console.log(q)
+    $scope.is_selection_question = q.is_selection_question
+    $scope.selection_question_options =  q.selection_question_options,
     $scope.responses[q.id] = {
       question_id: q.id,
       question: q.question,
@@ -42,13 +44,13 @@ angular.module('workships-mobile')
       _.each($scope.employees, function (emp) {
         if (!emp) { return; }
         if (_.find($scope.r.responses, { employee_details_id: emp.id, selected: true })) { return; }
-        if ($scope.full_search || _.find($scope.r.responses, { employee_details_id: emp.id })) { 
+        if ($scope.full_search || _.find($scope.r.responses, { employee_details_id: emp.id })) {
 
        // if (!_.find($scope.tiny_array, {employee_details_id: emp.id}) ) {return;}
           var role = emp.role === undefined ? 'N/A' : emp.role;
           res.push({
             id: emp.id,
-            name: emp.name, 
+            name: emp.name,
             role: role,
           });
         }
@@ -298,7 +300,7 @@ angular.module('workships-mobile')
   // Otherwise, we count both 'true' and 'false'
   $scope.isFinished = function () {
     var finished = false;
-  console.log(mass)
+
     if (mass.is_funnel_question) {
       finished = mass.num_replies_true === mass.client_max_replies;
     } else {
@@ -315,24 +317,24 @@ angular.module('workships-mobile')
   };
 
   $scope.canFinish = function () {
-    console.log(mass.is_funnel_question)
+    // console.log(mass)
     if (mass.is_funnel_question) {
       return mass.num_replies_true >= mass.client_min_replies &&
              mass.num_replies_true <= mass.client_max_replies;
     }
-    if (mass.is_selection_question) {
-      var hasTrueValue = mass.selection_question_options.some(function(option) {
+    if ($scope.is_selection_question) {
+      var hasTrueValue = $scope.selection_question_options.some(function(option) {
         return option.value === true;
       });
       return hasTrueValue;
     }
     var num_reps = mass.num_replies_true + mass.num_replies_false;
-    console.log(num_reps)
+    // console.log(num_reps)
     // console.log('&&&&&&&&&&&&&&&&&&&&&&&')
     // console.log(mass)
     // console.log('num_reps: ', num_reps, ', mass.client_max_replies: ', mass.client_max_replies)
     // console.log('&&&&&&&&&&&&&&&&&&&&&&&')
-    console.log(num_reps === mass.client_max_replies)
+    // console.log(num_reps === mass.client_max_replies)
     return num_reps === mass.client_max_replies
   };
 
@@ -382,9 +384,9 @@ angular.module('workships-mobile')
 
 
 var my_color;
-// if(index==0) 
+// if(index==0)
 //    my_color = mobileAppService.get_avatar_colors()[0]
-// else 
+// else
   if(index%6==0)
   my_color = mobileAppService.get_avatar_colors()[5]
 else if(index%5 ==0)
@@ -395,7 +397,7 @@ else if(index%3==0)
   my_color = mobileAppService.get_avatar_colors()[2]
 else if(index%2==0)
   my_color = mobileAppService.get_avatar_colors()[1]
-else 
+else
   my_color = mobileAppService.get_avatar_colors()[0]
    // return {'background-color': my_color};
     return {"background-color": my_color};
@@ -621,7 +623,12 @@ else
       $scope.paramsForGettingFirstQ.q_num = 1;
       console.log('here is current position > 1')
       console.log($scope)
+
         ajaxService.getFirstQuestion($scope.paramsForGettingFirstQ).then( function (response) {
+          console.log(response)
+          if (response.data.is_selection_question && response.data.selection_question_options !== null && response.data.selection_question_options !== undefined && response.data.selection_question_options.length > 0) {
+            $scope.interestQuestionForm = true;
+          }
           $scope.first_q = response.data;
           canUserReturnToFirstQuestion($scope.first_q.answered,$scope.first_q.max);
           // before rewrite, we must cached our original data to manipulate it later
@@ -860,7 +867,7 @@ else
   function handleGetNextQuestionResult(response, options) {
     console.log(response)
     $scope.current_question_position = response.data.current_question_position;
-
+    console.log($scope)
     if (response.data.current_question_position == 1 && response.data.is_snowball_q) {
       $scope.is_snowball_q_first_step = true;
     } else {
@@ -902,6 +909,14 @@ else
       $scope.full_search = false;
     console.log('handle scope result after all')
     console.log($scope)
+    if ($scope.is_selection_question &&
+        $scope.selection_question_options !== null &&
+        $scope.selection_question_options !== undefined &&
+        $scope.selection_question_options.length > 0
+    ) {
+      $scope.interestQuestionForm = true;
+    }
+    console.log($scope)
   }
 
   /////////////////////////////////////////////////////////////////////////////
@@ -910,9 +925,9 @@ else
   function handleCloseQuestionResult(response) {
     console.log(response)
     if (response === undefined) { return; }
-
     var res = response.data;
       console.log(res)
+    $scope.interestQuestionForm = false;
      if(res && res.status === 'fail') {
       console.error('Question was not closed becuase: ', res.reason);
     }
@@ -921,7 +936,6 @@ else
   }
 
   function syncDataWithServer(params, options) {
-    console.log(params, options)
     if (options && options.continue_later) {
       params.continue_later = true;
     } else {
@@ -929,16 +943,15 @@ else
     }
     // if (!params.is_selection_question) {
       var p1 = ajaxService.get_employees(params);
-    console.log(p1)
       // The reason for doing this here is that the first time this function is
       // called we don't want to close the question, but in subsequent calls we
       // do. At any rate we can only call get_next_question if the previouse
       // question was already called.
-    console.log(params.responses)
+
       if (params.responses) {
         delete params.responses;
       }
-    console.log(params.tiny_array)
+
       if (params.tiny_array) {
         delete params.tiny_array;
       }
@@ -950,9 +963,7 @@ else
       var p2 = (options && options.close_question ?
           ajaxService.close_question(params) :
           Promise.resolve());
-    console.log(p2)
-    console.log(options)
-
+      console.log('close_question')
       if (options && options.reset) {
         $q.all([
           p1.then(function (response) {
@@ -963,24 +974,12 @@ else
           }).then(function () {
             return ajaxService.get_next_question(params);
           }).then(function (response) {
-            console.log(response)
             handleGetNextQuestionResult(response, options);
           })
         ]).then(function () {
           if ($scope.original_data.status === 'done') {
             mobileAppService.setFinishView();
           } else {
-            // if ($scope.original_data.is_selection_question) {
-            //   console.log($scope.r)
-            //   $scope.show_popup = true;
-            //   $scope.show_full_question = true;
-            //   console.log($scope.container)
-            //   $scope.loaded[0] = true;
-            //   // $scope.show_question = true;
-            //   // $scope.question_text = $scope.original_data.question_text;
-            //   //
-            //   // $scope.options = $scope.original_data.options;
-            // } else {
               console.log('This is responses in sync Data with server')
               console.log($scope.responses[_.keys($scope.responses)[0]].responses.length)
               console.log($localStorageService.getObject('responses'))
@@ -1051,18 +1050,9 @@ else
               }
               $scope.loaded[0] = true;
               $scope.hhh = $scope.search_list();
-            // }
           }
         });
       }
-    // } else {
-    //   console.log(params)
-    //   ajaxService.get_next_question(params)
-    //       .then(function(response) {
-    //         handleGetNextQuestionResult(response, options);
-    //       });
-    // }
-
   }
 
   function closeSearchWhenClickingElsewhere(event, callbackOnClose) {
@@ -1170,7 +1160,7 @@ else
       $scope.hhh = $scope.search_list();
       $window.onclick = function (event) {
         closeSearchWhenClickingElsewhere(event, $scope.toggleSearchInput);
-      };    
+      };
     }else {
       $scope.search_input.text = '';
       $scope.search_input.firstname = '';
@@ -1409,20 +1399,15 @@ else
     });
   };
 
-    $scope.submitInterestQuestionForm = function () {
-      console.log($scope.interestQuestion.selectedOption);
-      console.log($scope.r.selection_question_options)
+  $scope.interestQuestionForm = false;
+
+  $scope.submitInterestQuestionForm = function () {
       $scope.findSelectedOptionIndex($scope.interestQuestion.selectedOption)
 
       if ($scope.selectedOptionIndex !== -1) {
-        console.log($scope.r)
-        console.log($scope.selectedOptionIndex)
-        const selectedOption = $scope.r.selection_question_options[$scope.selectedOptionIndex];
+        const selectedOption = $scope.selection_question_options[$scope.selectedOptionIndex];
         console.log(selectedOption)
         selectedOption.value = true;
-        console.log(mass)
-        const masSelect = mass.selection_question_options[$scope.selectedOptionIndex];
-        masSelect.value = true;
       }
       const selectedParam = $scope.interestQuestion.selectedOption;
       var data = {
@@ -1430,22 +1415,13 @@ else
         qpid: $scope.original_data.qpid,
         token: $scope.params.token
       };
-      // ajaxService.createUnverifiedEmployee(data).then(function(response) {
-      //   console.log(response)
-      //   var newEmployeeObject = {
-      //     id: response.data.e_id,
-      //     name: response.data.name,
-      //     qp_id:response.data.qpid,
-      //     role: "Employee",
-      //     image_url: response.data.image_url
-      //   }
-      //   $scope.employees.push(newEmployeeObject)
-      // })
       console.log(data)
-      mass.num_replies_true = 1;
-      var isFinished = $scope.canFinish();
-      console.log(isFinished)
-      canUserReturnToFirstQuestion(mass.num_replies_true,mass.client_max_replies)
+      // mass.num_replies_true = 1;
+      // mass.client_min_replies = 0;
+      // mass.min = 0;
+      // var isFinished = $scope.canFinish();
+      // console.log(isFinished)
+      // canUserReturnToFirstQuestion(mass.num_replies_true,mass.client_max_replies)
     };
 
     $scope.interestQuestion = {
@@ -1453,16 +1429,9 @@ else
     };
 
     $scope.findSelectedOptionIndex = function(name) {
-      console.log(name)
-      console.log($scope.r.selection_question_options.length)
-      console.log($scope.r.selection_question_options[1].name)
-      for (var i = 0; i < $scope.r.selection_question_options.length; i++) {
-        console.log($scope.r.selection_question_options[i].name == name)
-        console.log($scope.r.selection_question_options[i])
-        if ($scope.r.selection_question_options[i].name == name) {
-          console.log($scope.r.selection_question_options[i].name)
+      for (var i = 0; i < $scope.selection_question_options.length; i++) {
+        if ($scope.selection_question_options[i].name == name) {
           $scope.selectedOptionIndex = i;
-          console.log($scope.selectedOptionIndex)
           break;
         }
       }
